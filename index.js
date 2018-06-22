@@ -14,6 +14,13 @@ export const mixin = {
             }
           })
         );
+        if (opts.watch) {
+          watchers.push(
+            this.$watch(prop, (newVal, oldVal) => {
+              opts.watch.bind(this)(newVal, oldVal);
+            })
+          )
+        };
         this[opts.sync] = this[prop];
       }
     });
