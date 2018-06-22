@@ -65,7 +65,6 @@ export default {
 It will update `activeTab` on `active` prop update and update `myTab` prop when `activeTab` is updated.  
 So you can write your tabs, forms or whatever else and don't care about props/data sync:
 
-#### app.vue
 ```vue
 <template>
   <div>
@@ -84,4 +83,29 @@ export default {
   }
 }
 </script>
+```
+
+## `watch` option
+
+Customizable alternative: you can define watcher in props instead of adding `watcher` option:
+
+```js
+export default {
+  props: {
+    items: {
+      type: Array,
+      watch (newItems) {
+        this.form.items = newItems.map(item => ({ id: item.id, title: item.title }))
+      }
+    }
+  },
+  data () {
+    return {
+      form: {
+        smth: 'lol',
+        items: []
+      }
+    }
+  }
+}
 ```
