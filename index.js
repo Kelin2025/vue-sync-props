@@ -14,16 +14,18 @@ export const mixin = {
             }
           })
         );
-        this[opts.sync] = this[prop];
-      };
+        if (this[prop] !== undefined || "default" in props) {
+          this[opts.sync] = this[prop];
+        }
+      }
       if (opts.watch) {
         watchers.push(
           this.$watch(prop, (newVal, oldVal) => {
             opts.watch.bind(this)(newVal, oldVal);
           })
-        )
+        );
         opts.watch.bind(this)(newVal, oldVal);
-      };
+      }
     });
 
     this.$once("beforeDestroy", () => {
@@ -32,6 +34,6 @@ export const mixin = {
   }
 };
 
-export default (Vue) => {
-  Vue.mixin(mixin)
-}
+export default Vue => {
+  Vue.mixin(mixin);
+};
