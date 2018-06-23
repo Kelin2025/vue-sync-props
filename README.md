@@ -1,11 +1,14 @@
 # vue-sync-props 
 
+Tiny Vue plugin to sync props and data easier
+
 ## Why do we need to store props in data?
 
 Imagine that we have tabs component. It has `options` prop and slots to display active tab.  
 It's independent component but we can use `active` prop to set active tab remotely (if needed).  
 So this component should have internal `active` property and should sync with external `active` prop.  
-We can do it with watchers but solution looks huge for this little case. So this package solves a problem
+We can do it with watchers but solution looks huge for this little case. So this package solves a problem.  
+Live example: [**click here**](https://codesandbox.io/s/98728qj6xo)
 
 ## Installation
 
